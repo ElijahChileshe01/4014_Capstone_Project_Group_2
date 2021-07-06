@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head> 
+      
+    <style>
+
+        body{
+            background-color: gray;
+        }
+
+
+        h1{
+            text-align: center;
+        }
+
+        .description {
+	        left: 50%;
+	        position: absolute;
+            top: 20%;
+            transform: translate(-50%, -55%);
+            text-align: center;
+        }   
+
+        .description h2 {
+	        color: white;
+        }
+
+        .description p {
+	        color: #fff;
+	        font-size: 1.3rem;
+	
+        }
+    </style>
+</head>
+<body>
+
+    <h1><b>File Upload</b></h1><br><br>
+
+    <div class="description">
+    <h2>Only PDFs are accepted by the Self Archiving Tool</h2>
+
+<form action="/fileupload/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="avater">
+    <button>Submit</button>
+</div>
+
+  
+    
+</form>
+
+</body>
+
+</html>
