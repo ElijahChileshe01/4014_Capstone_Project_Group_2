@@ -90,11 +90,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
+}); 
 
 //Set application to run on port 5500
-app.listen(5500,()=>{
-  console.log('Application is running on port 5500')
+app.listen(3500,()=>{
+  console.log('Application is running on port 3500')
 })
 
 module.exports = app;

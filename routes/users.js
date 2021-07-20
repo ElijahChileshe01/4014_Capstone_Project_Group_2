@@ -117,5 +117,10 @@ router.get('/welcome', (req,res)=>{
   res.render('users/welcome')
 })
 
+//trying 
+router.get('/weltry', (req, res)=>{
+  res.render('users/weltry');
+})
+
 
 module.exports = router;
