@@ -3,21 +3,27 @@
     <head>
         <style>
 
-body {
-  background-color: rgb(245, 245, 245);
-  margin: 0px;
-  font-size: 1em;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+
+.body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    background-image: url('https://www.online-tech-tips.com/wp-content/uploads/2019/07/archives.jpg.webp');
+
 }
 
 
 .header  {
-  background-image: url('https://openaccessbelgium.files.wordpress.com/2021/02/vierkanteroohyaah.png');
+  background-image: url('https://www.online-tech-tips.com/wp-content/uploads/2019/07/archives.jpg.webp');
   background-size: cover;
-  background-position: center;
+  background-position: unset;
   background-repeat: no-repeat;
-  height: 620px;
-  width: 100%;
+  height: 450px;
+  width: fit-content;
   border-top: transparent;
   text-align: center;
   padding-top: 28px;
@@ -25,24 +31,31 @@ body {
   
 }
 
-.header h1 {
+/*.header h1 {
   font-family: "Gentium Book Basic", Georgia, serif;
   letter-spacing: 0.25em;
-  /*font-weight: 800;*/
+  /*font-weight: 800;
+  text-align: center;
   
 }
+*/
 
 .header h1 {
-  font-size: 4.8rem;
+  font-family: "Gentium Book Basic", Georgia, serif;
+  font-size: 2.5rem;
   text-shadow: 5px 1px 1px black;
   color: white;
+  padding-top: 100px;
+  letter-spacing: 0.25em;
 }
+
+
 
 /***  MIDCONTENT  ***/
 
 .midsection1  {
   text-align: justify;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
   
 }
 
@@ -73,24 +86,75 @@ body {
     display: grid;
 }
 
+nav{
+
+  width: 100%;
+  height: 75px;
+  background-color: #505d61;
+  line-height: 75px;
+  padding: opx 100px;
+  position: fixed;
+  z-index: 1;
+}
+
+
+
 
         </style>
 
     </head>    
           <body>
-            <title>Welcome Page</title>
+           
 
+           
+                
+
+
+                
             <header>
               <div class="header">
-                
-                <h1 class="hh1">Welcome to the Self Archiving Tool</h1>
 
+                <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                  <a href="#" class="navbar-brand">self-archive</a>
+              
+                  <div class="collapse navbar-collapse">
+                     
+                    <ul class="navbar-nav">
+                        <li class="nav-item"> <a href="#" class="nav-link">home</a> </li>
+                        <li class="nav-item"> <a href="#" class="nav-link">about-us</a> </li>
+                        <li class="nav-item"> <a href="#" class="nav-link">contact-us</a> </li>
+                        <li class="nav-item"> <a href="#" class="nav-link">get-started</a> </li>
+                        <li class="nav-item"> <a href="#" class="nav-link">Login</a> </li>
+                        
+                        
+                      </ul>
+              
+                  </div>
+              
+                  
+              </nav>
+
+                   
+            
+                
+                <h1 >Welcome to the Self Archiving Tool</h1>
+
+                
+            
+        
+                
               </div>
+
+              
+                  
+  
+  
 
             </header>
 
-            <div class="midcontent">
-              <section class="midsection1">
+
+              <midcontent>
+
                 <h3>Introduction</h3>
                 <p>This Self Archiving tool is a tool that has been implemented to ensure that the various users of the tool should be
                    able to easily deposit their digital content to The University of Zambia Institutional Repository. </p>
@@ -108,6 +172,17 @@ body {
                 <p class="next">Click the <b>Register</b> button to get started</p> <br>
 
                 <button class="button"><a href="/users/register">Register</a></button>
+
+
+
+         
+              </midcontent>
+
+
+            
+
+
+
 
           </body>  
 </html>
