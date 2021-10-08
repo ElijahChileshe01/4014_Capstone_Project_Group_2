@@ -106,7 +106,7 @@ router.get('/login', (req, res) => {
 //POST the login form
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {        
-    successRedirect: '/users/welcome',
+    successRedirect: '/fileupload',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
@@ -117,10 +117,7 @@ router.get('/welcome', (req,res)=>{
   res.render('users/welcome')
 })
 
-//trying 
-router.get('/weltry', (req, res)=>{
-  res.render('users/weltry');
-})
+
 
 
 module.exports = router;

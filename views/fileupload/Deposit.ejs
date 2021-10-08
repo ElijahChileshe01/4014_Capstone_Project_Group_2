@@ -3,16 +3,13 @@
 <head> 
       
     <style>
-
         body{
             background-color: gray;
         }
-
-
         h1{
             text-align: center;
+            color: aliceblue;
         }
-
         .description {
 	        left: 50%;
 	        position: absolute;
@@ -20,29 +17,56 @@
             transform: translate(-50%, -55%);
             text-align: center;
         }   
-
         .description h2 {
 	        color: white;
         }
-
         .description p {
 	        color: #fff;
 	        font-size: 1.3rem;
 	
         }
     </style>
+
+
+<link rel="stylesheet" href="/stylesheets/fileuploadcss.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body><br>
 
-    <h1><b>File Upload</b></h1><br><br>
-
+    <h1><b>File Upload Section</b></h1><br>
+<!-- 
     <div class="description">
-    <h2>Only PDFs are accepted by the Self Archiving Tool</h2>
-
+    <h2>Only PDFs are accepted by the Self Archiving Tool</h2> -->
+<!-- 
 <form action="/fileupload/upload" method="POST" enctype="multipart/form-data">
     <input type="file" name="avatar">
-    <button>Submit</button>
-</div>
+    <button>Submit</button> -->
+</div><br>
+
+<div class="PDFupload">
+    <b><p>Please upload the file you wish to upload from your local hard drive<br> Select "Browse...",<br> and select the file and submit. <br><br><b>Only PDF documents are allowed</b></b></p><br><br>
+    <form action="/fileupload/upload" method="post" enctype="multipart/form-data">
+        
+
+        <i class="fa fa-file-pdf-o" style="font-size:150px"></i>
+
+        <p> Select a file or drag and drop a file</p>
+        <input type= "file" name= "file"><br><br><br><br>
+        
+        
+        <!-- <form name="form1" id="form1" action="/action_page.php"> -->
+            
+
+            <!-- <button onclick="location.href='/etds/viewsubmissions'" type="button"><b>Complete Submission</b></button> -->
+        <button style="font-size:18px" onclick="location.href='/fileupload/viewsubmissions'">Submit <i class="fa fa-file-pdf-o"></i></button>
+        
+        <p></p> 
+    </form>
+</div>    
+
 
   
     

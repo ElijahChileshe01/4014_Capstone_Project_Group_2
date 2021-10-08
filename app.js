@@ -9,10 +9,12 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
-
-
+const bodyParser = require('body-parser');
+// const router = express.Router();
 
 const app = express();
+
+// router.use(bodyParser())
 
 //Passport config
 require('./config/passport')(passport);
@@ -32,11 +34,13 @@ db.once('open', ()=>{
 app.use(expressLayouts); 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+//Body-parser helps obtain data from form using req.body
+app.use(express.urlencoded({ extended: false }));
 
+// const urlencodedParser = bodyParser.urlencoded({extended: false})
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));         //Body-parser helps obtain data from form using req.body
+app.use(express.json());         
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

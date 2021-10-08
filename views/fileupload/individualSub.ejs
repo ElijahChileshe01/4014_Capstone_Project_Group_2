@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    h2{
+        text-align: left;
+    }
+    .buttonB{
+        border-radius: 8px;
+    }
+    .borderViewUser{
+    background-color: gainsboro;
+    padding: 20px;
+    border: 3px solid black!important;
+    border-radius: 20px;
+}
+</style>
+
+\
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Users</title>
+</head>
+<body>
+    <% etdList.forEach(function(Value) { %>
+    <h2><b>View details for: <%=Value.Creators_first_name%>  <%=Value.Creators_last_name%>  </b> </h2><hr>
+    
+    
+    <div class="borderViewUser">
+    <table class="table table-hover">
+ 
+
+        
+            <tr>
+                <th>Title</th>
+                <th>First Name </th>
+                <th>Last name</th>
+                <th>Action</th>
+            </tr>
+        <% etdList.forEach(function(Value) { %>
+        <tr>
+            <td>
+                <%= Value.Title %>
+            </td>
+            
+
+            <td>
+                <%= Value.Creators_first_name %>
+            </td>
+            <td>
+                
+                <%= Value.Creators_last_name %>
+            </td>
+        
+    <td>
+       
+       
+           
+        
+               <button class="btn btn-secondary" onclick="location.href='/fileupload/viewsubmissions'" type="button">Back</button>
+        </td>   
+       
+    </tr>    
+                   
+                <% }) %> 
+                <% }) %> 
+        
+
+    </table>
+</div>
+
+  
+</body>
+</html>
+
+
+

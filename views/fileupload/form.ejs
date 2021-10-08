@@ -1,0 +1,155 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  <style type="text/css">
+
+   .h2{
+      text-align: center;
+   }
+
+  </style >
+</head>
+
+
+<% if(typeof alert != 'undefined') { %>
+   <% alert.forEach(function(error) { %>
+      <div class='alert alert-warning alert-dismissible fade show' role="alert">
+         <%= error.msg %>
+         <button type='button' class='close' data-dismiss='alert' aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+         </button>
+      </div>
+  <% }) %>
+<% } %> 
+
+        <form action="/fileupload/form" method="POST">
+         <br>
+         <div class="h2">
+         <h2><b>New Form Submission</b></h2>
+         </div>
+
+         <table class="table table-hover">
+            <tr>
+               <div class="row">
+                 <div class="col">
+                   <td><h4><b>Authors first Name:</b></h4><input type="text" class="form-control" name = "Creators_first_name" placeholder="First name"></td>
+                 </div>
+                 
+                 <div class="col">
+                   <td><h4><b>Authors Last Name:</b></h4><input type="text" class="form-control" name = "Creators_last_name" placeholder="Last name"></td>
+                 </div>
+            </tr>
+   
+            <tr>
+                  <div class="row">
+                   <td><h4><b>Title:</b></h4><input type="text" class="form-control" name = "Title" placeholder="Title"></td>
+                 </div>
+            </tr>
+    
+            <tr>
+                   <div class="row">
+                   <td><h4><b>Publication Date:</b></h4><input type="date" class="form-control" name = "Date_of_Issue" placeholder="Date of Publication"></td>
+                  </div>
+            </tr>
+    
+            
+            <tr>
+                  <div class="row">
+                  <td><h4><b>Publisher:</b></h4><input type="text" class="form-control" name = "Publisher" placeholder="E.g University of Zambia"></td>
+               </div>
+            </tr>
+                
+            <tr>
+                  <div class="row">
+                  <td><h4><b>Citation:</b></h4><input type="text" class="form-control" name = "Citation"></td>
+               </div>
+            </tr>
+               
+            <tr>
+                  <div class="row">
+                  <td><h4><b>Report_No:</b></h4><input type="text" class="form-control" name = "Report_No"></td>
+               </div>
+            </tr>
+            
+            <tr>
+               <div class="form-group">
+                  <td><h4><b>Identifier:</b></h4><label for="Identifier"></label>
+                 <select class="form-control" id="Identifier" name="Identifier">
+                  <option value = "ISSN"> ISSN </option>
+                  <option value = "Other"> Other </option>
+                  <option value = "ISMN"> ISMN </option>
+                  <option value = "Govt Doc"> Govt Doc </option>
+                  <option value = "URI"> URI </option>
+                  <option value = "ISBN"> ISBN </option>
+                 </select></td>
+               </div>
+            </tr>
+   
+            <tr>
+               <div class="form-group">
+                  <td><h4><b>Publication Type:</b></h4><label for="Publication Type"></label>
+                  <select multiple class="form-control" id="Publication Type" name="Type_of_Publication">
+                  <option value = "Animation"> Animation </option>
+                  <option value = "Article"> Article </option>
+                  <option value = "Book Chapter"> Book Chapter </option>
+                  <option value = "Dataset"> Dataset </option>
+                  <option value = "Learning Object"> Learning Object </option>
+                  <option value = "Technical Report"> Technical Report </option>
+                  <option value = "Thesis"> Thesis </option>
+                 </select></td>
+               </div>
+            </tr>
+   
+            <tr>
+                     <div class="row">
+                     <td><h4><b>Language:</b></h4><input type="text" class="form-control" name = "Language" placeholder="E.g English "></td>
+                  </div>
+            </tr>
+      
+            <tr>
+                     <div class="row">
+                     <td><h4><b>Key Words:</b></h4><input type="text" class="form-control" name = "Key_Words"></td>
+                  </div>
+            </tr>
+      
+            <tr>
+                     <div class="form-group">
+                    <td><h4><b>Abstract</b></h4><label for="Abstract"></label>
+                    <textarea class="form-control" id="Abstract" name="Abstract" rows="3"></textarea></td>
+                  </div>
+            </tr>
+   
+   
+          
+         </table>
+            
+            
+            
+         </div>
+         <button><b>Lookup</b></button> <button type="submit"><b>Next</b></button> 
+      </form>
+     </div>
+    </div>
+  </div>
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
