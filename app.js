@@ -96,11 +96,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 }); 
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8008;
 
 //Set application to run on port 5500
 app.listen(port,()=>{
-  console.log('Application is running on port 3500')
+  console.log('Application is running on port' + port)
 })
 
 
