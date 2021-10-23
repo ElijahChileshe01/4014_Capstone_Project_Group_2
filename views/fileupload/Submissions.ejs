@@ -47,33 +47,33 @@
                     <th>Title</th>
                     <th>Action</th>
                 </tr>
-            <% etdList.forEach(function(Value) { %>
+            <% etdList.forEach(function(value) { %>
             <tr>
                 <td>
-                    <%= Value.Creators_first_name %>
+                    <%= value.Creators_first_name %>
                 </td>
                 <td>
-                    <%= Value.Creators_last_name %>
+                    <%= value.Creators_last_name %>
                 </td>
                 <td>
-                    <%= Value.Date_of_Issue %>
+                    <%= value.Date_of_Issue %>
                 </td>
     
                 
                 <td>
-                    <%= Value.file %>
+                    <%= value.file %>
                 </td>
                 
                 <td>
-                    <%= Value.Title %>
+                    <%= value.Title %>
                 </td>
 
                 <td>
         
-                    <button class="btn btn-primary" onclick="location.href='/fileupload/viewsubmissions/view/<%= Value._id %>'" type="button">View</button>
-                    <button class="btn btn-info" onclick="location.href='/fileupload/viewsubmissions/edit/<%= Value._id %>'" type="button">Edit</button>
-                    <button class="btn btn-success" onclick="location.href='/fileupload/viewsubmissions/sync/<%= Value._id %>'" type="button">Syncronise</button>
-                    <button class="btn btn-danger" onclick="location.href='/fileupload/viewsubmissions/delete/<%= Value._id %>'" type="button">Delete</button>
+                    <button class="btn btn-primary" onclick="location.href='/fileupload/viewsubmissions/view/<%= value._id %>'" type="button">View</button>
+                    <button class="btn btn-info" onclick="location.href='/fileupload/viewsubmissions/editprofile/<%= value._id %>'" type="button">Edit</button>
+                    <button class="btn btn-success" onclick="location.href='/fileupload/viewsubmissions/sync/<%= value._id %>'" type="button">Syncronise</button>
+                    <button class="btn btn-danger" onclick="location.href='/fileupload/viewsubmissions/delete/<%= value._id %>'" type="button">Delete</button>
 
             
                     <!-- <button type="button" class="btn btn-danger">Danger</button> -->

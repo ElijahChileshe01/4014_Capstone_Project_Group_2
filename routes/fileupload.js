@@ -10,6 +10,7 @@ const rp = require('request-promise')
 const path = require('path');
 const mongoose = require ('mongoose')
 const ETDmodel = require ('../models/ETD.model')
+const Registrationmodel = require ('../models/Registration')
 const expressValidator = require('express-validator');
 const { check, validationResult } = require('express-validator');
 const bodyParser = require('body-parser');
@@ -40,59 +41,6 @@ const storage = multer.diskStorage({
 
 //specify destination of upload
 const upload = multer({storage});
-
-
-//View the Metadata Form
-router.get('/form', (req, res) => {
-    res.render('fileupload/form')
-})
-
- router.post('/form', 
- [
-    check('Creators_last_name', 'Authors Last Name is not Valid').notEmpty(),
-    check('Creators_first_name', 'Authors First Name is not Valid').notEmpty(),
-    check('Title','Title is not Valid').notEmpty(),
-    check('Date_of_Issue','Date is Invalid').notEmpty(),
-    check('Publisher','Publisher is not Valid'),
-    check('Citation','Citation is not Valid').notEmpty(),
-    check('Report_No','Report Number is not Valid').notEmpty(),
-],
-    async (req, res) => {
-    // console.log(req.body)
-    let forms = new ETDmodel ({
-        Creators_last_name: req.body.Creators_last_name,
-        Creators_first_name: req.body.Creators_first_name,
-        Title: req.body.Title,
-        Date_of_Issue: req.body.Date_of_Issue,
-        Publisher: req.body.Publisher,
-        Citation: req.body.Citation,
-        Report_No: req.body.Report_No,
-        Identifier: req.body.Identifier,
-        Type_of_Publication: req.body.Type_of_Publication,
-        Language: req.body.Language,
-        Abstract: req.body.Abstract,
-        Key_Words: req.body.Key_Words,
-        File: req.body.file 
-    })
-    {
-        const errors = validationResult(req)
-        console.log(errors)
-        if(!errors.isEmpty()){
-            const alert = errors.array()
-            res.render('fileupload/form', {
-                alert
-            })
-            return;
-        }
-    }
-    try{
-        forms = await forms.save()
-        console.log(forms)
-        res.redirect('/fileupload/viewsubmissions')
-    } catch (error) {
-        console.log(error)
-    }
-});
 
 
 
@@ -350,15 +298,63 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       
     //   return res.json({status:'OK'},) 
   res.redirect('/fileupload/form')
-  
-  
-  
-  
-  
       
   
   });
   
+//View the Metadata Form
+router.get('/form', (req, res) => {
+    res.render('fileupload/form')
+})
+
+ router.post('/form', 
+ [
+    check('Creators_last_name', 'Authors Last Name is not Valid').notEmpty(),
+    check('Creators_first_name', 'Authors First Name is not Valid').notEmpty(),
+    check('Title','Title is not Valid').notEmpty(),
+    check('Date_of_Issue','Date is Invalid').notEmpty(),
+    check('Publisher','Publisher is not Valid'),
+    check('Citation','Citation is not Valid').notEmpty(),
+    check('Report_No','Report Number is not Valid').notEmpty(),
+],
+    async (req, res) => {
+    // console.log(req.body)
+    let forms = new ETDmodel ({
+        Creators_last_name: req.body.Creators_last_name,
+        Creators_first_name: req.body.Creators_first_name,
+        Title: req.body.Title,
+        Date_of_Issue: req.body.Date_of_Issue,
+        Publisher: req.body.Publisher,
+        Citation: req.body.Citation,
+        Report_No: req.body.Report_No,
+        Identifier: req.body.Identifier,
+        Type_of_Publication: req.body.Type_of_Publication,
+        Language: req.body.Language,
+        Abstract: req.body.Abstract,
+        Key_Words: req.body.Key_Words,
+        File: req.body.file 
+    })
+    {
+        const errors = validationResult(req)
+        console.log(errors)
+        if(!errors.isEmpty()){
+            const alert = errors.array()
+            res.render('fileupload/form', {
+                alert
+            })
+            return;
+        }
+    }
+    try{
+        forms = await forms.save()
+        console.log(forms)
+        res.redirect('/fileupload/viewsubmissions')
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+
     
   
   
@@ -386,6 +382,65 @@ router.get('/viewsubmissions/view/:id', (req, res) => {
         });
 });
 
+
+//edit user details
+router.get('/viewsubmissions/editprofile/:id', (req, res) =>{
+    console.log(req.params.id);
+    ETDmodel.findById(req.params.id, (err, forms) => {
+      
+        if (!err) 
+        { 
+            console.log(forms); 
+            res.render('fileupload/editprofile', {
+                value: forms
+            });
+        } else {
+            console.log("cannot get users");
+        }
+    })
+})
+
+//Update User details
+
+// router.put('/viewsubmissions/updateprofile/:id', (req, res) =>{
+//     console.log(req.params.id)
+//     ETDmodel.findById(req.params.id, (err, value) => {
+//         if(err){
+//             res.redirect('/viewsubmissions/updateprofile/:id')
+//         }else{
+//             value.Creators_first_name= req.body.Creators_first_name,
+//             value.Creators_last_name= req.body.Creators_last_name,
+//             // value.email= req.body.email
+//             value.save((err, saveduser)=>{
+//                 if(err){
+//                     // res.send(err);
+//                     res.redirect('/viewsubmissions/updateprofile/:id')
+//                 }else{
+//                     res.redirect('/fileupload/viewsubmissions');
+//                     console.log('User updated successfully')
+//                 }
+//             })    
+//         }
+//     })
+// })
+
+
+
+router.put('/viewsubmissions/updateprofile/:id', async (req, res)=> {
+    
+    let forms = await ETDmodel.findById(req.params.id)
+    forms.Creators_first_name= req.body.Creators_first_name;
+    forms.Creators_last_name= req.body.Creators_last_name
+
+    try {
+        forms = await forms.save();
+        res.redirect('/fileupload/viewsubmissions')
+    }catch (error){
+        console.log(error)
+        res.redirect('/viewsubmissions/updateprofile/:id')
+
+    }
+})
 
 
 //delete individual users records   

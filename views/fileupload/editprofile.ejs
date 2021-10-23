@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html>
+<head> 
+      
+    <style>
+        body{
+            background-color: gray;
+        }
+        h1{
+            text-align: center;
+            color: aliceblue;
+        }
+        .description {
+	        left: 50%;
+	        position: absolute;
+            top: 20%;
+            transform: translate(-50%, -55%);
+            text-align: center;
+        }   
+        .description h2 {
+	        color: white;
+        }
+        .description p {
+	        color: #fff;
+	        font-size: 1.3rem;
+	
+        }
+    </style>
+
+
+<link rel="stylesheet" href="/stylesheets/fileuploadcss.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body><br>
+
+    <h1><b>Edit Users Details</b></h1><br>
+<!-- 
+    <div class="description">
+    <h2>Only PDFs are accepted by the Self Archiving Tool</h2> -->
+<!-- 
+<form action="/fileupload/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="avatar">
+    <button>Submit</button> -->
+    <h2><u><b>Update Profile for: <%= value.Creators_last_name %> </b></u></h2><br>
+    <form class="container" action="/fileupload/viewsubmissions/updateprofile/<%= value._id %>?_method=PUT"  method="POST" >
+        <!-- <input type="hidden" name="_method" value="PUT">  -->
+        <div class="PDFupload">    
+    
+                 
+
+                    <div class="form-group">
+                        <label for="Creators_first_name">Authors First Name</label>
+                        <input
+                          type="text" id="Creators_first_name" placeholder="Enter first Name" name="Creators_first_name" class="form-control"   value="  <%= value.Creators_first_name %> "/>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="Creators_last_name">Authors Last Name</label>
+                        <input
+                          type="text" id="Creators_last_name" name="Creators_last_name" class="form-control" value="  <%= value.Creators_last_name %> "placeholder="Enter Last Name"/>
+                      </div>
+            
+        <br><br>
+        
+        <button class="btn btn-success" type="submit" value="Update Details" >Update Details</button>   <button class="btn btn-secondary" onclick="location.href='/fileupload/viewsubmissions'" type="button">Back to Dashboard</button>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -19,4 +19,9 @@ const registrationSchema = new mongoose.Schema({
 );
 
 //Export Schema                  // Model name is Registration
-module.exports = mongoose.model('Registration', registrationSchema); 
+// module.exports = mongoose.model('Registration', registrationSchema); 
+
+const Registrationmodel = mongoose.model('Registration', registrationSchema);
+
+//export schema
+module.exports=Registrationmodel;

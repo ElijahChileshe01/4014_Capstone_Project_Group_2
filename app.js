@@ -10,6 +10,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+const methodOverride = require ('method-override')
 // const router = express.Router();
 
 const app = express();
@@ -19,8 +20,10 @@ const app = express();
 //Passport config
 require('./config/passport')(passport);
 
+
+
 //connect to MongoDB 
-mongoose.connect("mongodb+srv://Elijah:0000@cluster0.74ehc.mongodb.net/4014_Project", { useNewUrlParser: true, useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
+mongoose.connect(process.env.MONGO_URI || "mongodb+srv://Elijah:0000@cluster0.74ehc.mongodb.net/4014_Project", { useNewUrlParser: true, useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
 const db = mongoose.connection;
 
 db.on('error', (err)=>{
@@ -36,6 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //Body-parser helps obtain data from form using req.body
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 // const urlencodedParser = bodyParser.urlencoded({extended: false})
 
