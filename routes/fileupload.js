@@ -297,7 +297,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
          
       
     //   return res.json({status:'OK'},) 
-  res.redirect('/fileupload/form')
+ await res.redirect('/fileupload/form')
       
   
   });
