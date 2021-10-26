@@ -1,4 +1,4 @@
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +19,12 @@
       <div class="card card-body">
         <h1 class="text-center mb-3"><i class="fas fa-user-plus"></i> Register</h1>
          
-        <!--Display the error and success messages -->
+        Display the error and success messages 
+        
         <%- include ("../partials/messages"); %> 
         <form action="/users/register" method="POST">
           <div class="form-group"> 
-            <label for="name"><b>First Name</b></label>                                                                 <!--If validation does not pass, form details should stay-->
+            <label for="name"><b></b></label>                                                                 <!--If validation does not pass, form details should stay
             <input type="text" id="name" name="first_name" class="form-control" placeholder="Enter First Name" value="<%= typeof text != 'undefined' ? name : '' %>"/><br><br>
           </div>
 
@@ -60,13 +61,76 @@
 
 </html>
 
+ -->
 
 
 
 
+ <%- include ("../partials/messages"); %>
 
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img
+                src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
+                alt="Sample photo"
+                class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+              />
+            </div>
+            <form action="/users/register" method="POST">
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Student registration form</h3>
 
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example8">First Name</label>
+                  <input type="text" class="form-control form-control-lg" id="name" name="first_name" placeholder="Enter First Name" value="<%= typeof text != 'undefined' ? name : '' %>" />
+                  
+                </div>
 
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example9">Last Name</label>
+                  <input type="text" class="form-control form-control-lg" id="name" name="last_name" placeholder="Enter Last Name" value="<%= typeof text != 'undefined' ? name : '' %>" />
+                  
+                </div>
 
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example90">Email</label>
+                  <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter Email" value="<%= typeof email != 'undefined' ? email : '' %>"/>
+                  
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example99">Password</label>
+                  <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Create Password" value="<%= typeof password != 'undefined' ? password : '' %>"/>
+                  
+                </div>
+
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example97">Confirm Password</label>
+                  <input type="password" class="form-control form-control-lg" id="password2" name="password2" placeholder="Confirm Password" value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                  
+                </div>
+
+                <div class="d-flex justify-content-end pt-3">
+                  <button type="button" class="btn btn-light btn-lg">Reset all</button>
+                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                </div>
+
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
