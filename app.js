@@ -104,7 +104,7 @@ const port = process.env.PORT || 8008;
 
 //Set application to run on port 5500
 app.listen(port,()=>{
-  console.log('Application is running on port' + port)
+  console.log('Application is running on port ' + port)
 })
 
 

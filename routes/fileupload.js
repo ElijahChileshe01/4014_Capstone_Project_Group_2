@@ -66,97 +66,97 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   
     //setting options
   
-    function init() {
-        var options = new Object();
+    // function init() {
+    //     var options = new Object();
       
-          // start with the config file
-          //const config = require('../config.json');
-          options.grobid_host = "localhost";
-          options.grobid_port = "8070";
-          options.sleep_time = 5000;
-          options.outPath = '/home/elijah/Desktop/pdfs'
-          options.obj ="";
-          // default service is full text processing
-          options.action = "processHeaderDocument";
-          options.concurrency = 2; // number of concurrent call to GROBID, default is 10
-          var attribute; // name of the passed parameter
-          // get the path to the PDF to be processed
-          options.parser="";
+    //       // start with the config file
+    //       //const config = require('../config.json');
+    //       options.grobid_host = "localhost";
+    //       options.grobid_port = "8070";
+    //       options.sleep_time = 5000;
+    //       options.outPath = '/home/elijah/Desktop/pdfs'
+    //       options.obj ="";
+    //       // default service is full text processing
+    //       options.action = "processHeaderDocument";
+    //       options.concurrency = 2; // number of concurrent call to GROBID, default is 10
+    //       var attribute; // name of the passed parameter
+    //       // get the path to the PDF to be processed
+    //       options.parser="";
       
-         // options.concurrency = 10; // number of concurrent call to GROBID, default is 10
-          var attribute; // name of the passed parameter
-          // get the path to the PDF to be processed
-          return options;
-        }
+    //      // options.concurrency = 10; // number of concurrent call to GROBID, default is 10
+    //       var attribute; // name of the passed parameter
+    //       // get the path to the PDF to be processed
+    //       return options;
+    //     }
       
              
         
-      function callGROBID(options, file, callback) {
-          console.log("---\nProcessing: ");
-      //const params = {}   
-          var form = new FormData();
-          form.append("input", fs.createReadStream(path.join ("/home/elijah/Desktop/4014_CP/Demo/ETSA/4014_Capstone_Project_Group_2/public/"+file)));
-          form.append("consolidateHeader", "1");
-          form.append("consolidateCitations", "0");
-          //form.append("Accept: application/x-bibtex");
-          var grobid_url = "http://" + options.grobid_host;
-          if (options.grobid_port) 
-              grobid_url += ':' + options.grobid_port
-          grobid_url += '/api/'; 
-          form.submit(grobid_url+options.action, function(err, res, body) {
-             console.log(grobid_url+options.action);
-             console.log('grobid has started');
+    //   function callGROBID(options, file, callback) {
+    //       console.log("---\nProcessing: ");
+    //   //const params = {}   
+    //       var form = new FormData();
+    //       form.append("input", fs.createReadStream(path.join ("/home/elijah/Desktop/4014_CP/Demo/ETSA/4014_Capstone_Project_Group_2/public/"+file)));
+    //       form.append("consolidateHeader", "1");
+    //       form.append("consolidateCitations", "0");
+    //       //form.append("Accept: application/x-bibtex");
+    //       var grobid_url = "http://" + options.grobid_host;
+    //       if (options.grobid_port) 
+    //           grobid_url += ':' + options.grobid_port
+    //       grobid_url += '/api/'; 
+    //       form.submit(grobid_url+options.action, function(err, res, body) {
+    //          console.log(grobid_url+options.action);
+    //          console.log('grobid has started');
              
-              if (err) {
-                  console.log(err);
-                  return false;
-              }
+    //           if (err) {
+    //               console.log(err);
+    //               return false;
+    //           }
       
-              if (!res) {
-                  console.log("GROBID service appears unavailable");
-                  //return false;
-              } else {
-                 res.setEncoding('utf8');
-              }
+    //           if (!res) {
+    //               console.log("GROBID service appears unavailable");
+    //               //return false;
+    //           } else {
+    //              res.setEncoding('utf8');
+    //           }
       
-              if (res.statusCode == 503) {
-                  // service unavailable, normally it means all the threads for GROBID on the server are currently used 
-                  // so we sleep a bit before retrying the process
-                  sleep.sleep(options.sleep_time); 
-                  return callGROBID(options, file, callback);
-              } else if (res.statusCode == 204) {
-                  // success but no content, no need to read further the response and write an empty file
-                  return true;
-              } else if (res.statusCode != 200) {
-                  console.log("Call to GROBID service failed with error " + res.statusCode);
-                  return false;
-              }
-            console.log('process done-----------now making boody')
-              var body = "";
-              res.on("data", function (chunk) {
-                  body += chunk;
-              });
+    //           if (res.statusCode == 503) {
+    //               // service unavailable, normally it means all the threads for GROBID on the server are currently used 
+    //               // so we sleep a bit before retrying the process
+    //               sleep.sleep(options.sleep_time); 
+    //               return callGROBID(options, file, callback);
+    //           } else if (res.statusCode == 204) {
+    //               // success but no content, no need to read further the response and write an empty file
+    //               return true;
+    //           } else if (res.statusCode != 200) {
+    //               console.log("Call to GROBID service failed with error " + res.statusCode);
+    //               return false;
+    //           }
+    //         console.log('process done-----------now making boody')
+    //           var body = "";
+    //           res.on("data", function (chunk) {
+    //               body += chunk;
+    //           });
               
-              //console.log(body);
-              //res.send(body);
+    //           //console.log(body);
+    //           //res.send(body);
              
-              res.on("end", function () {
-                  mkdirp(options.outPath, function(err, made) {
+    //           res.on("end", function () {
+    //               mkdirp(options.outPath, function(err, made) {
                      
                      
-                      xml2json({
-                          input: options.outPath+"/"+file,
-                          output: 'null'
-                      }, function(err, result) {
+    //                   xml2json({
+    //                       input: options.outPath+"/"+file,
+    //                       output: 'null'
+    //                   }, function(err, result) {
                         
-                          if(err) {
-                              console.error(err);
-                          } else {
-                              console.log("HERE ARE THE RESULTS")
-                              console.log(result);
-                          }
+    //                       if(err) {
+    //                           console.error(err);
+    //                       } else {
+    //                           console.log("HERE ARE THE RESULTS")
+    //                           console.log(result);
+    //                       }
                         
-                      });
+    //                   });
                      
                      
                      
@@ -165,108 +165,108 @@ router.post('/upload', upload.single('file'), async (req, res) => {
                      
                      
                      
-                      // I/O error
-                      if (err) 
-                          return cb(err);
+    //                   // I/O error
+    //                   if (err) 
+    //                       return cb(err);
       
                           
       
-                      // first write the TEI reponse 
-                      var jsonFilePath = options.outPath+"/"+file.replace(".pdf", ".tei.xml");
-                      fs.writeFile(jsonFilePath, body, 'utf8', 
+    //                   // first write the TEI reponse 
+    //                   var jsonFilePath = options.outPath+"/"+file.replace(".pdf", ".tei.xml");
+    //                   fs.writeFile(jsonFilePath, body, 'utf8', 
       
                      
                       
-                          function(err, ) { 
-                              if (err) { 
-                                  console.log(err);
-                              } 
-                              console.log( "TEI response written under: " + jsonFilePath); 
+    //                       function(err, ) { 
+    //                           if (err) { 
+    //                               console.log(err);
+    //                           } 
+    //                           console.log( "TEI response written under: " + jsonFilePath); 
                               
                              
-                            // xmldata = JsonStringfy(body, "json/xml");
+    //                         // xmldata = JsonStringfy(body, "json/xml");
       
                               
       
-                             //obj = JSON.parse(body);
-                             console.log(body);
+    //                          //obj = JSON.parse(body);
+    //                          console.log(body);
                              
-                              callback();
-                          }
-                      );
-                  });
-              });
+    //                           callback();
+    //                       }
+    //                   );
+    //               });
+    //           });
       
       
       
               
-           //  callback();
+    //        //  callback();
             
-          });
-      }
+    //       });
+    //   }
       
       
-      function processGROBID(options) {
-          // get the PDF paths
-          var listOfFiles = getFiles(path.join ("/home/elijah/Desktop/4014_CP/Demo/ETSA/4014_Capstone_Project_Group_2/public"));
-          console.log("found " + listOfFiles.length + " files to be processed");
+    //   function processGROBID(options) {
+    //       // get the PDF paths
+    //       var listOfFiles = getFiles(path.join ("/home/elijah/Desktop/4014_CP/Demo/ETSA/4014_Capstone_Project_Group_2/public"));
+    //       console.log("found " + listOfFiles.length + " files to be processed");
           
-          var q = async.queue(function (file, callback) {
-              callGROBID(options, file, callback);
-             // console.log(body)
-          }, options.concurrency);
+    //       var q = async.queue(function (file, callback) {
+    //           callGROBID(options, file, callback);
+    //          // console.log(body)
+    //       }, options.concurrency);
           
         
       
-          q.drain = function() {
-              console.log( "\nall tasks completed!");
+    //       q.drain = function() {
+    //           console.log( "\nall tasks completed!");
               
-          }
+    //       }
       
-          for(var i = 0; i < listOfFiles.length; i++) {
-              q.push(listOfFiles[i], function (err) {  
-                  if (err) { 
-                      return console.log('error in adding tasks to queue'); 
-                  }  
-                  console.log('task is completed');  
-              });
-          }
+    //       for(var i = 0; i < listOfFiles.length; i++) {
+    //           q.push(listOfFiles[i], function (err) {  
+    //               if (err) { 
+    //                   return console.log('error in adding tasks to queue'); 
+    //               }  
+    //               console.log('task is completed');  
+    //           });
+    //       }
           
-      }
+    //   }
       
-      // get file
+    //   // get file
       
-      function getFiles(dir) {
-          var fileList = [];
-          var files = fs.readdirSync(dir);
-          for (var i=0; i<files.length; i++) {
-              if (fs.statSync(path.join(dir, files[i])).isFile()) {
-                  if (files[i].endsWith(".pdf") || files[i].endsWith(".PDF"))
-                      fileList.push(files[i]);
-              }
-          }
-          return fileList;
-      }
+    //   function getFiles(dir) {
+    //       var fileList = [];
+    //       var files = fs.readdirSync(dir);
+    //       for (var i=0; i<files.length; i++) {
+    //           if (fs.statSync(path.join(dir, files[i])).isFile()) {
+    //               if (files[i].endsWith(".pdf") || files[i].endsWith(".PDF"))
+    //                   fileList.push(files[i]);
+    //           }
+    //       }
+    //       return fileList;
+    //   }
       
-      function start() {
-          var options = init();
-          start = new Date()
-          processGROBID(options);
-          console.log("function ends");
-      }
-         start();
+    //   function start() {
+    //       var options = init();
+    //       start = new Date()
+    //       processGROBID(options);
+    //       console.log("function ends");
+    //   }
+    //      start();
          
       
          
-      /**
-       * Process a PDF file by calling the entity-fishing service and enrich with the resulting
-       * JSON
-       * @param {object} options object containing all the information necessary to manage the paths:
-       *  - {object} inPath input directory where to find the PDF files
-       *  - {object} outPath output directory where to write the results
-       *  - {string} profile the profile indicating which filter to use with the entity-fishing service, e.g. "species"
-       * @return {undefined} Return undefined
-       */
+    //   /**
+    //    * Process a PDF file by calling the entity-fishing service and enrich with the resulting
+    //    * JSON
+    //    * @param {object} options object containing all the information necessary to manage the paths:
+    //    *  - {object} inPath input directory where to find the PDF files
+    //    *  - {object} outPath output directory where to write the results
+    //    *  - {string} profile the profile indicating which filter to use with the entity-fishing service, e.g. "species"
+    //    * @return {undefined} Return undefined
+    //    */
       
       
       
@@ -274,26 +274,26 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       
         
       
-        /*let todo = {
-            userId: 123,
-            title: "loren impsum doloris",
-            completed: false
-        };
-        */
-         // let path = '/home/slim/Desktop/pdfs'
+    //     /*let todo = {
+    //         userId: 123,
+    //         title: "loren impsum doloris",
+    //         completed: false
+    //     };
+    //     */
+    //      // let path = '/home/slim/Desktop/pdfs'
       
-        /*fetch('localhost:8070/api/processHeaderDocument', {
+    //     /*fetch('localhost:8070/api/processHeaderDocument', {
             
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' },
-            input: path
-        }).then(res => res.json())
-          .then(json => console.log(json));*/
+    //         method: 'POST',
+    //         body: JSON.stringify(data),
+    //         headers: { 'Content-Type': 'application/json' },
+    //         input: path
+    //     }).then(res => res.json())
+    //       .then(json => console.log(json));*/
       
       
           
-            console.log('end;;;;;;;;;;;;;;');
+    //         console.log('end;;;;;;;;;;;;;;');
          
       
     //   return res.json({status:'OK'},) 
