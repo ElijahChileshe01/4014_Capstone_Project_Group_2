@@ -49,18 +49,18 @@
     <h2><u><b>Update Profile for: <%= value.Creators_last_name %> </b></u></h2><br>
     <form class="container" action="/fileupload/viewsubmissions/updateprofile/<%= value._id %>?_method=PUT"  method="POST" >
         <!-- <input type="hidden" name="_method" value="PUT">  -->
-        <div class="PDFupload">    
+        <div class="EditUser">    
     
                  
 
                     <div class="form-group">
-                        <label for="Creators_first_name">Authors First Name</label>
+                        <label for="Creators_first_name"><h5><b>Authors First Name</h5></b></label>
                         <input
                           type="text" id="Creators_first_name" placeholder="Enter first Name" name="Creators_first_name" class="form-control"   value="  <%= value.Creators_first_name %> "/>
                       </div>
 
                       <div class="form-group">
-                        <label for="Creators_last_name">Authors Last Name</label>
+                        <label for="Creators_last_name"><h5><b>Authors Last Name</h5></b></label>
                         <input
                           type="text" id="Creators_last_name" name="Creators_last_name" class="form-control" value="  <%= value.Creators_last_name %> "placeholder="Enter Last Name"/>
                       </div>

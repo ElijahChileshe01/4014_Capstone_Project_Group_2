@@ -1,6 +1,153 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/stylesheets/form.css">
+</head>
+
+<% if(typeof alert != 'undefined') { %>
+    <% alert.forEach(function(error) { %>
+       <div class='alert alert-warning alert-dismissible fade show' role="alert">
+          <%= error.msg %>
+          <button type='button' class='close' data-dismiss='alert' aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+   <% }) %>
+ <% } %> 
+
+<div class="form-bg">
+   <div class="container">
+       <div class="row">
+           <div class="col-md-offset-2 col-md-8">
+               <form class="form-horizontal" action="/fileupload/form" method="POST">
+                   <div class="header">Please Fill in the Form</div>
+                   <div class="form-content">
+                       <div class="form-group">
+                           <table class="table table-hover">
+                               <div class="row">
+                                   <div class="col">
+                           <div class="col-sm-6">
+                               <td><h5><b>Authors First Name:</b></h5><input class="form-control" id="Creators_first_name" name="Creators_first_name" placeholder="First Name" type="text"></td>
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-user"></i></label> 
+
+                               <div class="col">
+                                <div class="col-sm-6">
+                                <td><b><h5>Authors Last Name:</b></h5><input class="form-control" id="Creators_last_name" name="Creators_last_name" placeholder="Last Name" type="text"></td>
+                                 <label class="control-label" for="exampleInputName2"><i class="fa fa-user"></i></label> 
+                            
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            
+                        
+                         
+                         <tr>
+                            <div class="row">
+                             <td><h5><b>Title:</b></h5><input type="text" class="form-controll" name = "Title" placeholder="Title"></td>
+                           </div>
+                      </tr>
+              
+                      
+                      
+                      <tr>
+                            <div class="row">
+                            <td><h5><b>Publisher:</b></h5><input type="text" class="form-controll" name = "Publisher" placeholder="E.g University of Zambia"></td>
+                         </div>
+                      </tr>
+                      
+                      
+                      <tr>
+                        <div class="row">
+                        <td><h5><b>Publication Date:</b></h5><input type="date" class="form-controll" name = "Date_of_Issue" placeholder="Date of Publication"></td>
+                       </div>
+                     </tr>
+         
+
+                      <tr>
+                            <div class="row">
+                            <td><h5><b>Citation:</b></h5><input type="text" class="form-controll" name = "Citation"></td>
+                         </div>
+                      </tr>
+                         
+                      <tr>
+                            <div class="row">
+                            <td><h5><b>Report_No:</b></h5><input type="text" class="form-controll" name = "Report_No"></td>
+                         </div>
+                      </tr>
+                      
+                      <tr>
+                         <div class="form-group">
+                            <td><h5><b>Identifier:</b></h5><label for="Identifier"></label>
+                           <select class="form-controll" id="Identifier" name="Identifier">
+                            <option value = "ISSN"> ISSN </option>
+                            <option value = "Other"> Other </option>
+                            <option value = "ISMN"> ISMN </option>
+                            <option value = "Govt Doc"> Govt Doc </option>
+                            <option value = "URI"> URI </option>
+                            <option value = "ISBN"> ISBN </option>
+                           </select></td>
+                         </div>
+                      </tr>
+             
+                      <tr>
+                         <div class="form-group">
+                            <td><h5><b>Publication Type:</b></h5><label for="Publication Type"></label>
+                            <select class="form-controll" id="Publication Type" name="Type_of_Publication">
+                            <option value = "Animation"> Animation </option>
+                            <option value = "Article"> Article </option>
+                            <option value = "Book Chapter"> Book Chapter </option>
+                            <option value = "Dataset"> Dataset </option>
+                            <option value = "Learning Object"> Learning Object </option>
+                            <option value = "Technical Report"> Technical Report </option>
+                            <option value = "Thesis"> Thesis </option>
+                           </select></td>
+                         </div>
+                      </tr>
+             
+                      <tr>
+                        <div class="form-group">
+                           <td><h5><b>Language:</b></h5><label for="Language"></label>
+                           <select class="form-controll" id="Language" name="Language">
+                           <option value = "English"> English </option>
+                          </select></td>
+                        </div>
+                     </tr>
+                
+                      <tr>
+                               <div class="row">
+                               <td><h5><b>Key Words:</b></h5><input type="text" class="form-controll" name = "Key_Words"></td>
+                            </div>
+                      </tr>
+                
+                            <tr>
+                             <div class="form-group">
+                              <td><h5><b>Abstract</b></h5><label for="Abstract"></label>
+                              <textarea class="form-controlll" id="Abstract" name="Abstract" rows="3" ></textarea></td>
+                            </div>
+                        </tr> 
+              
+
+                        </div>
+                            
+                 
 
 
 
+                            </table>
+                   <div class="footer clearfix">
+                       <button type="submit" class="btn btn-default">Submit Form</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
+</div>
+</html> 
+
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,15 +265,20 @@
                   </div>
             </tr>
       
-            <tr>
+            
                      <div class="form-group">
                     <td><h4><b>Abstract</b></h4><label for="Abstract"></label>
                     <textarea class="form-control" id="Abstract" name="Abstract" rows="3"></textarea></td>
+                  </div> 
+
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
-            </tr>
+    
+            
    
-   
-          
+            
          </table>
             
             

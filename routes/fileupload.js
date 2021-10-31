@@ -288,7 +288,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
     //         body: JSON.stringify(data),
     //         headers: { 'Content-Type': 'application/json' },
     //         input: path
-    //     }).then(res => res.json())
+    //     }).then(res => res.json())   
     //       .then(json => console.log(json));*/
       
       
