@@ -7,14 +7,25 @@
 
   <style type="text/css">
 
-   /* .h2{
-      text-align: center;
+
+        
+        body{
+            
+         
+         padding-left: 35px;
+         padding-right: 35px;
+         padding-top: 20px;
+         background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/images/newpic4.jpg);
+         background-size: cover;
+         
+        }
+     
+
+     .h2{
+        text-align: center;
+      color: aliceblue;
    }
 
-   h1{
-        text-align: left;
-        
-    }
     .border{
 
         background-color: gainsboro;
@@ -22,17 +33,18 @@
         border: 3px solid black!important;
         border-radius: 20px;
        
-    } */
+    } 
 
 
   </style >
 </head>
-
+<body>
+    <div class="body">
 
         <form action="/fileupload/form" method="POST">
          <br>
          <div class="h2">
-            <h2><u><b>List of Form Uploads</b><br> </u></h2>
+            <h1><u><b>List of Form Uploads</b><br> </u></h1>
          </div>
 
     <div class="border">
@@ -42,9 +54,9 @@
                 <tr>
                     <th>First Name</th>
                     <th>Last name</th>
-                    <th>Date Submitted</th>
-                    <th>File Name</th>
                     <th>Title</th>
+                    <th>Date Submitted</th>
+                    <!-- <th>File Name</th> -->
                     <th>Action</th>
                 </tr>
             <% etdList.forEach(function(value) { %>
@@ -55,23 +67,26 @@
                 <td>
                     <%= value.Creators_last_name %>
                 </td>
-                <td>
-                    <%= value.Date_of_Issue %>
-                </td>
-    
                 
-                <td>
-                    <%= value.file %>
-                </td>
                 
                 <td>
                     <%= value.Title %>
                 </td>
 
+
+                <td>
+                    <%= value.Date_of_Issue %>
+                </td>
+    
+<!--                 
+                <td>
+                    <%= value.file %>
+                </td> -->
+                
                 <td>
         
                     <button class="btn btn-primary" onclick="location.href='/fileupload/viewsubmissions/view/<%= value._id %>'" type="button">View</button>
-                    <button class="btn btn-info" onclick="location.href='/fileupload/viewsubmissions/editprofile/<%= value._id %>'" type="button">Edit</button>
+                    <button class="btn btn-warning" onclick="location.href='/fileupload/viewsubmissions/editprofile/<%= value._id %>'" type="button">Edit</button>
                     <button class="btn btn-success" onclick="location.href='/fileupload/viewsubmissions/sync/<%= value._id %>'" type="button">Syncronise</button>
                     <button class="btn btn-danger" onclick="location.href='/fileupload/viewsubmissions/delete/<%= value._id %>'" type="button">Delete</button>
 
@@ -99,8 +114,8 @@
     </div>
   </div>
 
-
-
+</div>
+</body>
 
 </html>
 
